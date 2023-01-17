@@ -1,26 +1,46 @@
 //
 //  ContentView.swift
-//  WatchAppNew Watch App
+//  WatchApp Watch App
 //
 //  Created by Salted on 2023/01/17.
 //
 
 import SwiftUI
 
+var listData = [
+    ListData(name: "구글", bgColor: .secondary),
+    ListData(name: "네이버", bgColor: .green),
+    ListData(name: "애플", bgColor: .gray),
+    ListData(name: "다음", bgColor: .purple),
+]
+
 struct ContentView: View {
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        List{
+            ForEach(listData) { item in
+                HStack {
+                    Text(item.name)
+                    Spacer()
+                }
+                .padding()
+                .background(item.bgColor)
+                .cornerRadius(10)
+            
+            }
+            .listRowBackground(Color.clear)
         }
-        .padding()
     }
+    
 }
+
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
+
